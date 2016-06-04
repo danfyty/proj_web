@@ -37,7 +37,11 @@ module.exports = {
       },
     bio: {
         type: 'string'
-    }
+    },
+      groups: {
+          collection: 'group',
+          via: 'users'
+      }
   }
 };
 

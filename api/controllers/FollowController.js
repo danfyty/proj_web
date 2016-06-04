@@ -32,13 +32,30 @@ module.exports = {
             return res.json (follow_destroyed);
         });
     },
-    get_followers_by_id: function(user_id) {
-        Follow.find({'follower':user_id}).exec(function cb(err, ret) {
-            if (err)
-                console.log(err); 
-            console.log(ret);
-            return res.json(ret);
-        });
+    get_follows: function (req, res) {
+        var user_id = parseInt(req.params['query_str']);
+
+        if (isNaN(user_id)) {
+            User.findOne({'login':req.params['query_str']}).exec(function cb(err, ret) {
+                if (err)
+                    console.log (err);
+                if (!ret)
+                    return res.json([]);
+                user_id = parseInt(ret['id']); 
+                UserService.get_follows_by_id(user_id, 
+                        function cb(ret) {
+                            return res.json(ret);
+                        }
+                    );
+            }); 
+        }
+        else {
+            UserService.get_follows_by_id(user_id, 
+                   function cb(ret) {
+                       return res.json(ret);
+                   } 
+                   );
+        }
     },
     get_followers: function (req, res) {
         var user_id = parseInt(req.params['query_str']);
@@ -48,18 +65,22 @@ module.exports = {
                 if (err)
                     console.log (err);
                 if (!ret)
-                    return res.ok();
+                    return res.json([]);
                 user_id = parseInt(ret['id']); 
-                return get_followers_by_id (user_id);
+                UserService.get_followers_by_id(user_id, 
+                        function cb(ret) {
+                            return res.json(ret);
+                        }
+                    );
             }); 
         }
         else {
-            console.log (user_id);
-            return get_followers_by_id (user_id);
+            UserService.get_followers_by_id(user_id, 
+                   function cb(ret) {
+                       return res.json(ret);
+                   } 
+                   );
         }
-    },
-    get_follows: function (req, res) {
-        return res.send('b');
     }
 };
 

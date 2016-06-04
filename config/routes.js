@@ -32,6 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
    'get /user/get/name/:query_name' : 'User.get_by_name', 
+   'get /user/remove/:user_id' : 'User.remove', 
 
    /*se eh um numero entao busca por id, se nao busca por login*/
    'get /user/:query_str/followers' : 'Follow.get_followers', 
