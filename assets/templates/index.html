@@ -1,0 +1,14 @@
+<!doctype html>
+<!-- Autor: Danilo Francoso Tedeschi
+      nUSP: 8937361
+      email: danilo.tedeschi@usp.br
+-->
+<div ng-controller="index_controller" class="container">
+    <h1>TODO List:</h1>
+    <div>
+        <label>Tarefa:
+            <input type="text" ng-model="task_input" class="form-control" placeholder="Digite a Tarefa"/>
+        </label>
+        <button ng-click="add_task()" class="btn btn-default">Add</button>
+    </div>
+</div>
