@@ -21,7 +21,7 @@ app.config(['$routeProvider',
 app.factory('post_service', function($http) {
     return {
         'create': function(text, user_id) {
-            return $http.post('/post/create', {'text':text}, {'user_id': user_id});
+            return $http.post('/post/create', {'text':text, 'user_id': user_id});
         }
     };
 });
@@ -49,7 +49,7 @@ app.controller('post_controller', ['$scope', 'user_service','post_service', func
     $scope.err_message = '';
 
     user_service.get_user_logged().success (function(data) {
-        if (data) 
+        if (data)  
             $scope.user_logged = data;
         else 
             window.location.href = '#/signin'
@@ -57,11 +57,13 @@ app.controller('post_controller', ['$scope', 'user_service','post_service', func
 
 
     $scope.postit = function() {
-        post_service.create($scope.post_text, $scope.user_logged.id).success (
-                function(data) {
-                    console.log (data);
-                }
-                );
+        if ($scope.user_logged) {
+            post_service.create($scope.post_text, $scope.user_logged.id).success (
+                    function(data) {
+                        console.log (data);
+                    }
+                    );
+        }
     }
 
 }]);

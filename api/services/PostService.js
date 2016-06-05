@@ -7,6 +7,8 @@ module.exports = {
             if (ntext[i][0]=='#') 
                 rdata.push (ntext[i].substring(1)); /*removes first char*/
         }
+        if (rdata.length==0)
+            callback ([]);
         for (i=0; i<rdata.length; ++i) {
             Subject.create ({'name': rdata[i]}).exec (
                 function cb (err, data) {
@@ -27,6 +29,8 @@ module.exports = {
             if (ntext[i][0]=='@')
                 rdata.push (ntext[i].substring(1));
         }
+        if (rdata.length == 0)
+            callback ([]);
 
         for (i=0; i<rdata.length; ++i) {
             UserService.get_user_by_login (rdata[i], function cb (user) {
@@ -38,5 +42,4 @@ module.exports = {
             });
         }
     }
-
 };
