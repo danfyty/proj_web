@@ -5,6 +5,30 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 module.exports = {
+    get_user_logged: function (req, res) {
+        if (req.session.user)
+            return res.json (req.session.user);
+        else 
+            return res.json ([]);
+    },
+    set_user_logged: function (req, res) {
+        user_login = req.param("login");
+        user_password = req.param("password");
+
+        User.findOne({'login': user_login, 'password': user_password }).exec(
+                function cb (err, user) {
+                    if (err)
+                        console.log ("error getting the user");
+
+                    if (user) {
+                        req.session.user = user;
+                        delete req.session.user.password;
+                        return res.json (req.session.user);
+                    }
+                    else 
+                        return res.json ();
+                });
+    },
     create: function(req, res) {
         user = req.param("user"); 
         User.create(user).exec(function callback(err, user_created) {
