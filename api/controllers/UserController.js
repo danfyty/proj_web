@@ -9,7 +9,7 @@ module.exports = {
         if (req.session.user)
             return res.json (req.session.user);
         else 
-            return res.json ([]);
+            return res.json ();
     },
     set_user_logged: function (req, res) {
         user_login = req.param("login");

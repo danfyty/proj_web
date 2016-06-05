@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- Autor: Danilo Francoso Tedeschi
+      nUSP: 8937361
+      email: danilo.tedeschi@usp.br
+-->
+<div ng-controller="post_controller" class="container">
+    <h1>Post</h1>
+    <div>
+        <form role="user_form">
+            <div class="form-group">
+                <textarea ng-model="post_text">
+                </textarea>
+            </div>
+            <div class="form-group">
+                <button ng-click="postit()" class="btn btn-default">Post it!</button>
+            </div>
+        </form>
+    </div>
+</div>

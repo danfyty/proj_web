@@ -8,11 +8,11 @@
 module.exports = {
 
   attributes: {
-    id: {
-        type: 'integer',
-        autoIncrement: true,
-        primaryKey: true,
-    },
+      id: {
+          type: 'integer',
+          autoIncrement: true,
+          primaryKey: true,
+      },
       name: {
           type: 'string',
           required: true
@@ -35,12 +35,20 @@ module.exports = {
       birthday: {
           type: 'date'
       },
-    bio: {
-        type: 'string'
-    },
+      bio: {
+          type: 'string'
+      },
       groups: {
           collection: 'group',
           via: 'users'
+      },
+      posts_cited: {
+          collection: 'post',
+          via: 'users_cited'
+      },
+      posts_authored: {
+          collection: 'post',
+          via: 'user'
       }
   }
 };

@@ -1,5 +1,11 @@
 module.exports = {
-    get_user_by_id: function(user_id, callback) {
+    get_user_by_login: function(user_login, callback) {
+        User.findOne( {'login':user_login} ).exec (
+                function cb (err, user) {
+                    if (err) console.log (err);
+                    callback (user);
+                });
+
     },
     get_follows_by_id: function(user_id, callback) {
         Follow.find({'follower':user_id}).populate('follows').exec(function cb(err, ret) {
