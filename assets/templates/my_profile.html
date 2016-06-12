@@ -1,9 +1,9 @@
 <div class="container">
 <link rel="stylesheet" href="/styles/login.css">
-    <div class="row main">
+    <div class="row main cols-sm-3">
         <div class="panel-heading">
             <div class="panel-title text-center">
-                Sign Up
+                Editar meu profile
             </div>
         </div> 
         <div class="main-login main-center">
@@ -14,7 +14,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                            <input ng-model="user_name" type="text" class="form-control" name="name" id="name"  placeholder="Digite seu nome"/>
+                            <input ng-model="user_name" type="text" class="form-control" name="name" id="name" placeholder="{{user_logged.name}}" />
                         </div>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                            <input ng-model="user_email" type="text" class="form-control" name="email" id="email"  placeholder="Digite seu email"/>
+                            <input ng-model="user_email" type="text" class="form-control" name="email" id="email"  placeholder="{{user_logged.email}}"/>
                         </div>
                     </div>
                 </div>
@@ -34,10 +34,20 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                            <input ng-model="user_username" type="text" class="form-control" name="username" id="username"  placeholder="Digite seu nome de usuário"/>
+                            <input ng-model="user_username" type="text" class="form-control" name="username" id="username"  placeholder="{{user_logged.login}}"/>
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="bio" class="cols-sm-2 control-label">Bio</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input ng-model="user_bio" type="text" class="form-control" name="bio" id="bio"  placeholder="{{user_logged.bio}}"/>
+                        </div>
+                    </div>
+                </div>
+
 
                 <div class="form-group">
                     <label for="password" class="cols-sm-2 control-label">Senha</label>
@@ -64,7 +74,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                            <input ng-model="user_birth_date" type="date" class="form-control" name="birl_date" id="birl_data"  placeholder=""/>
+                            <input ng-model="user_birth_date" type="date" class="form-control" name="birl_date" id="birl_data"  placeholder="" value={{user_logged.birth_date}}/>
                         </div>
                     </div>
                 </div>
@@ -75,7 +85,10 @@
                 </span>
 
                 <div class="form-group ">
-                    <button ng-click="create()" type="button" class="btn btn-primary btn-lg btn-block login-button">Registrar</button>
+                    <button ng-click="update()" type="button" class="btn btn-primary btn-lg btn-block login-button">Editar</button>
+                </div>
+                <div class="form-group ">
+                    <button ng-click="remove()" type="button" class="btn btn-primary btn-lg btn-block btn-danger login-button">Excluir minha conta</button>
                 </div>
             </form>
         </div>

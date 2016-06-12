@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- Autor: Danilo Francoso Tedeschi
+      nUSP: 8937361
+      email: danilo.tedeschi@usp.br
+-->
+<div class="container">
+    <div ng-repeat="user in users">
+        <h3>{{user.name}}</h3>
+        <div>
+            <a href="#/profile/{{user.id}}">@{{user.login}}</a>
+            <span ng-hide="user.isfollowed">
+                <button ng-click="follow(user.id)" class="btn btn-xs btn-success">Follow</button>
+            </span>
+            <span ng-show="user.isfollowed">
+                <button ng-click="unfollow(user.id)" class="btn btn-xs btn-danger">Unfollow</button>
+            </span>
+        </div>
+    </div>
+</div>

@@ -19,8 +19,6 @@ module.exports = {
       },
       email: {
           type: 'string',
-          required: true,
-          notNull: true
       },
       login: {
           type: 'string',

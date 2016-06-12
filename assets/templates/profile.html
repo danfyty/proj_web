@@ -1,0 +1,48 @@
+<!doctype html>
+<!-- Autor: Danilo Francoso Tedeschi
+      nUSP: 8937361
+      email: danilo.tedeschi@usp.br
+-->
+<div class="container">
+    <div class="col-md-3">
+        <div>
+            <h3>{{curr_user.name}}</h3>
+            <a href="#/profile/{{curr_user.id}}">@{{curr_user.login}}</a> <br />
+            <button ng-hide="curr_user.isfollowed" ng-click="follow(curr_user.id)" class="btn btn-xs btn-success">Follow</button>
+            <button ng-show="curr_user.isfollowed" ng-click="unfollow(curr_user.id)" class="btn btn-xs btn-danger">Unfollow</button>
+            <p>{{curr_user.bio}}</p>
+        </div>
+
+    </div>
+    <div class="col-md-3">
+        <h3>Posts</h3>
+        <div ng-repeat="post in curr_user.posts_authored">
+            <div class="box-content">
+                <p ng-bind-html="post.text"></p>
+            </div>
+            <p>---------</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h3>Posts que Citam</h3>
+        <div ng-repeat="post in curr_user.posts_cited">
+            <div class="box-content">
+                <p ng-bind-html="post.text"></p>
+            </div>
+                <p>------</p>
+        </div>
+
+    </div>
+    <div class="col-md-3">
+        <h3>Follows</h3>
+
+        <div ng-repeat="user in curr_user.follows">
+            <div class="box-content">
+                <h5>{{user.name}}</h5>
+                <a href="#/profile/{{user.id}}">@{{user.login}}</a>
+                <p>------</p>
+            </div>
+        </div>
+
+    </div>
+</div>

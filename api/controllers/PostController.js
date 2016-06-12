@@ -21,11 +21,23 @@ module.exports = {
                                         users_cited_id.push (users_cited[i].id);
                                     post.users_cited.add (users_cited_id);
                                     post.subjects.add (subjects);
-                                    post.save(function (err) {});
+                                    post.save(function (err) {
+                                        if (err)
+                                           console.log(err);
+                                       res.json (post); 
+                                    });
                                 }
                                 );
             });
         });
-    }    
+    },
+    remove: function (req, res) {
+        post_id = req.param("post_id");
+        Post.destroy ({'id': post_id}).exec (function cb (err, post) {
+            if (err)
+                console.log (err);
+            return res.json (post);
+        });
+    } 
 };
 

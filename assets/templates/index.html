@@ -3,12 +3,47 @@
       nUSP: 8937361
       email: danilo.tedeschi@usp.br
 -->
-<div ng-controller="index_controller" class="container">
-    <h1>TODO List:</h1>
-    <div>
-        <label>Tarefa:
-            <input type="text" ng-model="task_input" class="form-control" placeholder="Digite a Tarefa"/>
+<div class="container">
+    <div class="col-md-3">
+    <h1>Poste algo:</h1>
+        <div>
+        <label>Texto:
+            <textarea ng-model="post_text" class="form-control"></textarea>
         </label>
-        <button ng-click="add_task()" class="btn btn-default">Add</button>
+        </div>
+        <button ng-click="postit()" class="btn btn-default">Add</button>
+    </div>
+    <div class="col-md-3">
+        <h3>Meus Posts</h3>
+        <div ng-repeat="post in user_logged.posts_authored">
+            <div class="box-content">
+                <div>
+                    <span ng-bind-html="post.text"></span>
+                    <button ng-click="rem_post(post.id)" class="btn btn-danger btn-xs">Excluir</button>
+                </div>
+                ................
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h3>Follow Posts</h3>
+        <div ng-repeat="post in posts_follows">
+            <div class="box-content">
+                <p ng-bind-html="post.text"></p>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-3">
+        <h3>Quem eu Sigo</h3>
+
+        <div ng-repeat="user in user_logged.follows">
+            <div class="box-content">
+                <h5>{{user.name}}</h5>
+                <a href="#/profile/{{user.id}}">@{{user.login}}</a>
+            </div>
+        </div>
+
     </div>
 </div>

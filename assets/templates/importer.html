@@ -1,0 +1,28 @@
+<div class="container">
+
+    <link rel="stylesheet" href="/styles/login.css">
+    <form class="">
+        <h2 class="-signin-heading">Importer </h2>
+        <textarea rows="18" cols="104" ng-model="json_input"></textarea>
+        <button ng-click="importit()" class="btn btn-lg btn-primary btn-block" type="submit">Importar</button>
+        <span ng-if="err_message != ''">
+            <div class="alert alert-danger">
+                {{err_message}}
+            </div>
+        </span>
+        <span ng-if="succ_message != ''">
+            <div class="alert alert-success">
+                {{succ_message}}
+            </div>
+        </span>
+
+        <div class="">
+            <a href="#/signup">Cadastre-se</a>
+        </div>
+    </form>
+
+</div> <!-- /container -->
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

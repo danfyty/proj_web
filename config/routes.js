@@ -37,13 +37,18 @@ module.exports.routes = {
    /*se eh um numero entao busca por id, se nao busca por login*/
    'get /user/:query_str/followers' : 'Follow.get_followers', 
    'get /user/:query_str/follows' : 'Follow.get_follows', 
+   'get /post/remove/:post_id' : 'Post.remove', 
 
+   'get /user/get_like_login/:query_login' : 'User.get_like_login',
    'get /user/get/login/:query_login' : 'User.get_by_login', 
    'get /follow/create/:follower/:follows' :'Follow.create',
    'get /unfollow/:follower/:follows' :'Follow.remove',
 
   '/': {
     view: 'homepage'
+  },
+  '/profile': {
+      view: 'homepage'
   }
 
   /***************************************************************************
